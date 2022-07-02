@@ -11,6 +11,10 @@ body{
     
 }
 
+#startBtn{
+    color: darkmagenta;
+}
+
 .scores{
     color: darkblue;
     border-style: dotted;
@@ -24,8 +28,7 @@ section{
 #questions {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: antiquewhite;
-    border-style: dotted;
+    background-color: antiquewhite;;
 
 }
 
@@ -41,4 +44,30 @@ section{
 .names{
     margin: 25px;
 }
+
+#submitBtn{
+    color: dodgerblue;
+}
+
+@media screen and (min-width: 992px){
+    body{
+        background-color: darkorange;
+    }
+
+}
+
+@media screen and (min-width: 768px){
+    body{
+        background-color: darkslateblue;
+    }
+
+}
+
+@media screen and (min-width: 480px){
+    body{
+        background-color: hotpink;
+    }
+
+}
+    
 

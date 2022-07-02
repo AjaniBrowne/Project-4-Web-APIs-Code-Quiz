@@ -2,22 +2,22 @@ var counter = 0;
 var seconds = 60;
 var timerId;
 var score = 10;
+var finalAnswerCheck = 0;
 
-console.log("Inside JS");
 var questionArray = [
     {
         questions:"what is Javascript?",
-        answers:["a","b","c","d"],
-        rightAnswer:"d"
+        answers:["Pizza","Tuna","Mark-up Language","Internet"],
+        rightAnswer:"Mark-up Language"
     },
     {
         questions:"What is CSS?",
-        answers:[],
-        rightAnswer:"Tool used to stylea webpage"
+        answers:["Corvette","BMX","<Script>","Styling Tool"],
+        rightAnswer:"Styling Tool"
     },
     {
         questions:"What is HTML?",
-        answers:[],
+        answers:["Run DMC","Carrots","AJAX","The skeleton of a webpage"],
         rightAnswer:"The skeleton of a webpage"
     },
 ];
@@ -27,7 +27,7 @@ function timer()
     document.getElementById("start").style.display = "none";
     timerId = setInterval(function(){
 
-        if(seconds === -1){
+        if(seconds <= -1){
             clearTimeout(timerId);
             showResults();
         }
@@ -50,6 +50,7 @@ for(var i=0; i<questionArray[counter].answers.length; i++){
     btn.setAttribute("value",questionArray[counter].answers[i] )
     btn.onclick = answerCheck;
     document.getElementById("questions").appendChild(btn);
+    
 }
 }
 
@@ -71,7 +72,7 @@ function answerCheck(){
     {
         seconds = seconds - 5;
         counter++;
-        if(seconds === -1 || counter === questionArray.length){
+        if(seconds <= -1 || counter === questionArray.length){
             clearTimeout(timerId);
             showResults();
         }
@@ -83,9 +84,29 @@ function answerCheck(){
 }
 
 function showResults()
-{
+{ document.getElementById("questions").innerHTML = `<h2> Score: ${seconds} </h2>
+<input type="text" id = "finalInput" >`;
+document.getElementById("submitBtn").disabled = false;
+
 
 }
+
+function saveHighScore()
+{
+   var user = document.getElementById("finalInput").value.trim();
+   if(user){
+    var previousScores = JSON.parse(window.localStorage.getItem("highScores")) || []
+    var combo = {score:seconds,name:user}
+    previousScores.push(combo);
+    previousScores.sort(function(a,b){
+        return b.score-a.score;
+    })
+    window.localStorage.setItem("highScores",JSON.stringify(previousScores));
+    window.location.href = "high-scores.html"
+   }
+
+}
+
 
 
 

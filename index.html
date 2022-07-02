@@ -7,12 +7,19 @@
     <link rel="stylesheet" href="./style.css">
     <title>Web Api Coding Quiz</title>
 </head>
+<header>
+    <a href="./high-scores.html">High Scores</a>
 
-<body>
+</header>
+    
+     
+
+<body> 
     <p>Time: <span id="time">60</span></p>
 
     <div id="start">
     <p>Hello! Take a quiz!</p>
+    <p>Please becareful. Every missed answer you lose time. Try not to miss a answer and you won't find out how much time is lost.</p>
     <button id="startBtn">Start</button>
     </div>
     <div class="quizlet" id="questions">
@@ -22,14 +29,8 @@
     <script src="script.js"></script>
 </body>
 
-<!-- <footer>
-
-    <div class = "nav">
-        <button class ="Submit">Submit</button>
-
-        <button class ="Next">Next</button>
-    </div>
-
-</footer> -->
+ <footer>
+<button id="submitBtn" type="submit" onclick="saveHighScore() " disabled>Submit </button>
+</footer> 
 
 </html>
